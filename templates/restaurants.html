@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>View All Restaurants</title>
+  </head>
+  <body>
+    <h1>Restaurants</h1>
+    <p><a href='{{url_for('newRestaurant')}}'>New Restaurant</a></p>
+    {% for r in restaurants%}
+
+    <div>
+      <h3><a href='{{url_for('showMenu')}}'>{{r.name}}</a></h3>
+      <p><a href='{{url_for('editRestaurant')}}'>Edit</a></p>
+      <p><a href='{{url_for('deleteRestaurant')}}'>Delete</a></p>
+    </div>
+    {% endfor %}
+  </body>
+</html>

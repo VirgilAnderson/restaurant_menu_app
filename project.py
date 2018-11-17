@@ -15,43 +15,63 @@ session = DBSession()
 @app.route('/')
 @app.route('/restaurants/')
 def showRestaurants():
-    return "This page will show all my restaurants"
+    #return "This page will show all my restaurants"
+    return render_template('restaurants.html', restaurants = restaurants)
 
 # Create New Restaurant
 @app.route('/restaurants/new')
 def newRestaurant():
-    return "This page will let me create a new restaurant"
+    #return "This page will let me create a new restaurant"
+    return render_template('newRestaurant.html')
 
 # Edit Restaurants
 @app.route('/restaurants/restaurant_id/edit')
 def editRestaurant():
-    return "This page will let me edit %s"
+    #return "This page will let me edit %s"
+    return render_template('editRestaurant.html', restaurant = restaurant)
 
 # Delete Restaurants
 @app.route('/restaurants/restaurant_id/delete')
 def deleteRestaurant():
-    return "This page will let me delete %s"
+    #return "This page will let me delete %s"
+    return render_template('deleteRestaurant.html', restaurant = restaurant)
 
 # Show Menu
 @app.route('/restaurants/restaurant_id/')
 @app.route('/restaurants/restaurant_id/menu')
 def showMenu():
-    return "This page will show the menu for %s"
+    #return "This page will show the menu for %s"
+    return render_template('menu.html', restaurant = restaurant, menuItems = items)
 
 # Create Menu item
 @app.route('/restaurants/restaurant_id/menu/new')
-def newMenu():
-    return "This page will let me create a new menu item"
+def newMenuItem():
+    #return "This page will let me create a new menu item"
+    return render_template('newMenuItem.html', restaurant = restaurant)
 
 # Edit Menu items
 @app.route('/restaurants/restaurant_id/menu/menu_id/edit')
-def editMenu():
-    return "This page will let me edit menu item %s"
+def editMenuItem():
+    #return "This page will let me edit menu item %s"
+    return render_template('editMenuItem.html', restaurant = restaurant, item = item)
 
 # Delete Menu
 @app.route('/restaurants/restaurant_id/menu_id/delete')
 def deleteMenuItem():
-    return "This page will let me delete menu item %s"
+    #return "This page will let me delete menu item %s"
+    return render_template('deleteMenuItem.html', restaurant = restaurant, item = item)
+
+#Fake Restaurants
+restaurant = {'name': 'The CRUDdy Crab', 'id': '1'}
+
+restaurants = [{'name': 'The CRUDdy Crab', 'id': '1'}, {'name':'Blue Burgers', 'id':'2'},{'name':'Taco Hut', 'id':'3'}]
+
+
+#Fake Menu Items
+items = [ {'name':'Cheese Pizza', 'description':'made with fresh cheese', 'price':'$5.99','course' :'Entree', 'id':'1'}, {'name':'Chocolate Cake','description':'made with Dutch Chocolate', 'price':'$3.99', 'course':'Dessert','id':'2'},{'name':'Caesar Salad', 'description':'with fresh organic vegetables','price':'$5.99', 'course':'Entree','id':'3'},{'name':'Iced Tea', 'description':'with lemon','price':'$.99', 'course':'Beverage','id':'4'},{'name':'Spinach Dip', 'description':'creamy dip with fresh spinach','price':'$1.99', 'course':'Appetizer','id':'5'} ]
+item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$5.99','course' :'Entree'}
+
+
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
