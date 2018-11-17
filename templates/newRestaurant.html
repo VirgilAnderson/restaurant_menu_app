@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>Create New restaurant</h1>
-    <form>
+    <form action="{{url_for('newRestaurant')}}" method='POST'>
       <p>Name: </p>
       <input type='text' name='name'>
       <input type='submit' value='Create'>

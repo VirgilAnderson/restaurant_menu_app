@@ -16,13 +16,20 @@ session = DBSession()
 @app.route('/restaurants/')
 def showRestaurants():
     #return "This page will show all my restaurants"
+    restaurants = session.query(Restaurant).all();
     return render_template('restaurants.html', restaurants = restaurants)
 
 # Create New Restaurant
-@app.route('/restaurants/new')
+@app.route('/restaurants/new/', methods=['GET', 'POST'])
 def newRestaurant():
     #return "This page will let me create a new restaurant"
-    return render_template('newRestaurant.html')
+    if request.method == 'POST':
+        newRestaurant = Restaurant(name = request.form['name'])
+        session.add(newRestaurant)
+        session.commit()
+        return redirect(url_for('restaurantMenu', restaurant_id = restaurant.id))
+    else:
+        return render_template('newRestaurant.html')
 
 # Edit Restaurants
 @app.route('/restaurants/restaurant_id/edit')
@@ -37,17 +44,18 @@ def deleteRestaurant():
     return render_template('deleteRestaurant.html', restaurant = restaurant)
 
 # Show Menu
-@app.route('/restaurants/restaurant_id/')
-@app.route('/restaurants/restaurant_id/menu')
-def showMenu():
+@app.route('/restaurants/<int:restaurant_id>/')
+@app.route('/restaurants/<int:restaurant_id>/menu')
+def showMenu(restaurant_id):
     #return "This page will show the menu for %s"
+    restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     return render_template('menu.html', restaurant = restaurant, menuItems = items)
 
 # Create Menu item
-@app.route('/restaurants/restaurant_id/menu/new')
-def newMenuItem():
+@app.route('/restaurants/<int:restaurant_id>/menu/new')
+def newMenuItem(restaurant_id):
     #return "This page will let me create a new menu item"
-    return render_template('newMenuItem.html', restaurant = restaurant)
+    return render_template('newMenuItem.html', restaurant = restaurant_id)
 
 # Edit Menu items
 @app.route('/restaurants/restaurant_id/menu/menu_id/edit')
@@ -59,12 +67,13 @@ def editMenuItem():
 @app.route('/restaurants/restaurant_id/menu_id/delete')
 def deleteMenuItem():
     #return "This page will let me delete menu item %s"
+
     return render_template('deleteMenuItem.html', restaurant = restaurant, item = item)
 
 #Fake Restaurants
-restaurant = {'name': 'The CRUDdy Crab', 'id': '1'}
+#restaurant = {'name': 'The CRUDdy Crab', 'id': '1'}
 
-restaurants = [{'name': 'The CRUDdy Crab', 'id': '1'}, {'name':'Blue Burgers', 'id':'2'},{'name':'Taco Hut', 'id':'3'}]
+#restaurants = [{'name': 'The CRUDdy Crab', 'id': '1'}, {'name':'Blue Burgers', 'id':'2'},{'name':'Taco Hut', 'id':'3'}]
 
 
 #Fake Menu Items
