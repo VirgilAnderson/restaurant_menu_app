@@ -61,16 +61,23 @@ def deleteRestaurant(restaurant_id):
 @app.route('/restaurants/<int:restaurant_id>/')
 @app.route('/restaurants/<int:restaurant_id>/menu')
 def showMenu(restaurant_id):
-    #return "This page will show the menu for %s"
+    # Read all the menu items for the restaurant
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     items = session.query(MenuItem).filter_by(id = restaurant_id).all()
     return render_template('menu.html', restaurant = restaurant, menuItems = items)
 
 # Create Menu item
-@app.route('/restaurants/<int:restaurant_id>/menu/new')
+@app.route('/restaurants/<int:restaurant_id>/menu/new', methods=['GET', 'POST'])
 def newMenuItem(restaurant_id):
-    #return "This page will let me create a new menu item"
-    return render_template('newMenuItem.html', restaurant = restaurant_id)
+    # Add a new menu item for the restaurant
+    restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    if request.method == 'POST':
+        newItem = MenuItem(name = request.form['name'], restaurant_id = restaurant.id)
+        session.add(newItem)
+        session.commit()
+        return redirect(url_for('showMenu', restaurant_id = restaurant.id))
+    else:
+        return render_template('newMenuItem.html', restaurant = restaurant)
 
 # Edit Menu items
 @app.route('/restaurants/restaurant_id/menu/menu_id/edit')
