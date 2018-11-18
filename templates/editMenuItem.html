@@ -5,11 +5,11 @@
   </head>
   <body>
     <h1>Edit {{item.name}}</h1>
-    <form>
+    <form action= "{{url_for('editMenuItem', restaurant_id = restaurant_id, menu_id=item.id)}}" method = 'POST'>
       <p>Name: </p>
-      <input type='text' placeholder="{{item.name}}">
+      <input type='text' name='name' placeholder="{{item.name}}">
       <input type='submit' value='Edit'>
     </form>
-    <p><a href='{{url_for('showMenu')}}'>Cancel</a></p>
+    <p><a href='{{url_for('showMenu', restaurant_id = restaurant_id)}}'>Cancel</a></p>
   </body>
 </html>
