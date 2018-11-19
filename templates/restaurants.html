@@ -5,6 +5,12 @@
   </head>
   <body>
     <h1>Restaurants</h1>
+    {% with messages = get_flashed_messages() %}
+    <ul>
+    {% for message in messages %}
+      <li><strong>{{ message }}</strong></li>
+    {% endfor %}
+    {% endwith %}
     <p><a href='{{url_for('newRestaurant')}}'>New Restaurant</a></p>
     {% for r in restaurants%}
 
