@@ -63,7 +63,7 @@ def deleteRestaurant(restaurant_id):
 def showMenu(restaurant_id):
     # Read all the menu items for the restaurant
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
-    items = session.query(MenuItem).filter_by(id = restaurant_id).all()
+    items = session.query(MenuItem).filter_by(restaurant_id = restaurant_id).all()
     return render_template('menu.html', restaurant = restaurant, menuItems = items)
 
 # Create Menu item
