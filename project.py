@@ -16,7 +16,7 @@ session = DBSession()
 @app.route('/restaurants/')
 def showRestaurants():
     #return "This page will show all my restaurants"
-    restaurants = session.query(Restaurant).all();
+    restaurants = session.query(Restaurant).all()
     return render_template('restaurants.html', restaurants = restaurants)
 
 # Create New Restaurant
@@ -117,12 +117,18 @@ def deleteMenuItem(restaurant_id, menu_id):
     else:
         return render_template('deleteMenuItem.html', restaurant_id = restaurant_id, item = deleteItem)
 
-# Make an API Endpoint (GET Request)
+# Menu API Endpoint
 @app.route('/restaurants/<int:restaurant_id>/menu/JSON')
 def restaurantMenuJSON(restaurant_id):
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     items = session.query(MenuItem).filter_by(restaurant_id = restaurant_id)
     return jsonify(MenuItems=[i.serialize for i in items])
+
+# Restaurant API Endpoint
+@app.route('/restaurants/JSON')
+def restaurantJSON():
+    restaurants = session.query(Restaurant).all()
+    return jsonify(Restaurant=[i.serialize for i in restaurants])
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
