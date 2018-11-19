@@ -72,7 +72,7 @@ def newMenuItem(restaurant_id):
     # Add a new menu item for the restaurant
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     if request.method == 'POST':
-        newItem = MenuItem(name = request.form['name'], restaurant_id = restaurant.id)
+        newItem = MenuItem(name = request.form['name'], price = request.form['price'], course = request.form['course'], description = request.form['description'], restaurant_id = restaurant.id)
         session.add(newItem)
         session.commit()
         return redirect(url_for('showMenu', restaurant_id = restaurant.id))

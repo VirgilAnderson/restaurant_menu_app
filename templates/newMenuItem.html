@@ -6,9 +6,32 @@
   <body>
     <h1>New Menu Item: {{restaurant.name}}</h1>
     <form action="{{ url_for('newMenuItem', restaurant_id = restaurant.id)}}" method='post'>
-      <p>Name: </p>
-      <input type='text' name='name'>
-      <input type='submit' value='Create'>
+      <fieldset>
+        <p>
+          <label for='name'>Name:</label><br>
+          <input type='text' name='name'>
+        </p>
+        <p>
+          <label for='price'>Price:</label><br>
+          <input type='text' name='price'>
+        </p>
+        <p>
+          <label for='course'>Course:</label><br>
+          <select name='course'>
+            <option value='appetizer'>Appetizer</option>
+            <option value='salad'>Salad</option>
+            <option value='soup'>Soup</option>
+            <option value='fish'>Fish</option>
+            <option value='entree'>Entree</option>
+            <option value='dessert'>Dessert</option>
+          </select>
+        </p>
+        <p>
+          <label for='description'>Description:</label><br>
+          <textarea name='description' cols=50 rows=10></textarea>
+        </p>
+        <input type='submit' value='Create'>
+      </fieldset>
     </form>
     <p><a href='{{url_for('showMenu', restaurant_id = restaurant.id)}}'>Cancel</a></p>
   </body>
