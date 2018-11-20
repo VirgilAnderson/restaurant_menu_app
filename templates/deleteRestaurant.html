@@ -17,10 +17,17 @@
       </nav>
       <form action="{{url_for('deleteRestaurant', restaurant_id = restaurant.id)}}" method = 'POST'>
         <fieldset>
-          <label for='delete'>Are you rusre you want to delete {{restaurant.name}}?</label><br>
-          <input type='submit' value='Delete'>
+          <p>
+            <label for='delete'>Are you sure you want to delete {{restaurant.name}}?</label>
+          </p>
+          <p>
+            <input type='submit' value='Delete'>
+          </p>
         </fieldset>
       </form>
     </main>
+    <footer>
+      <p>&copy; Virgil Anderson 2018 | All rights reserved</p>
+    </footer>
   </body>
 </html>
