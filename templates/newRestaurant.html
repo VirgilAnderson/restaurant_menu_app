@@ -9,7 +9,12 @@
       <h1>Create New restaurant</h1>
     </header>
     <main>
-      <p><a href='{{url_for('showRestaurants')}}'>Cancel</a></p>
+      <div class='messages'></div>
+      <nav>
+        <div class='button'>
+          <a href='{{url_for('showRestaurants')}}'>Cancel</a>
+        </div>
+      </nav>
       <form action="{{url_for('newRestaurant')}}" method='POST'>
         <fieldset>
           <p>

@@ -11,10 +11,10 @@
     <main>
       <div class='messages'>
         {% with messages = get_flashed_messages() %}
-          {% for message in messages %}
-          <li><strong>{{ message }}</strong></li>
-          {% endfor %}
-          {% endwith %}
+        {% for message in messages %}
+        <strong>{{ message }}</strong>
+        {% endfor %}
+        {% endwith %}
       </div>
       <nav>
         <div class='button'>
