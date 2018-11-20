@@ -4,6 +4,10 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
     background-color: #B4C788;
+    background-image: url(background.jpg);
+    background-position: center;
+    background-repeat: none;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
 }
@@ -30,6 +34,7 @@ main{
   padding: 2%;
   float: left;
   border-radius: 25px;
+  opacity: .9;
 }
 .menuItem{
   background-color: #624577;
@@ -40,6 +45,7 @@ main{
   padding: 2%;
   float: left;
   border-radius: 25px;
+  opacity: .9;
 }
 fieldset{
   background-color: #624577;
@@ -50,6 +56,7 @@ fieldset{
   padding: 2%;
   float: left;
   border-radius: 25px;
+  opacity: .9;
 }
 
 /*
