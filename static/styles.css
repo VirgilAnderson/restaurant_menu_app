@@ -21,9 +21,37 @@ a{
 a:hover {
     color: #F8C9CD;
 }
+header{
+  margin: 0;
+  padding: 1% 2%;
+  width: 96%;
+  background-color: #391A4E;
+  border-top: 8px solid #9E8DAB;
+}
 main{
   width: 90%;
   margin: auto;
+}
+.messages{
+  width: 90%;
+  padding: 1%;
+  margin: auto;
+  color: #F8C9CD;
+}
+nav {
+  width: 90%;
+  margin: auto;
+  padding: 0;
+  float: left;
+}
+.button{
+  padding: 1%;
+  margin: 0 2%;
+  border: 2px solid white;
+  color: white;
+  width: 15%;
+  text-align: center;
+  float: left;
 }
 .restaurant{
   background-color: #624577;

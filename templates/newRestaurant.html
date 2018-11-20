@@ -5,8 +5,10 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css')}}">
   </head>
   <body>
-    <main>
+    <header>
       <h1>Create New restaurant</h1>
+    </header>
+    <main>
       <p><a href='{{url_for('showRestaurants')}}'>Cancel</a></p>
       <form action="{{url_for('newRestaurant')}}" method='POST'>
         <fieldset>

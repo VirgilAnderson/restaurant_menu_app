@@ -5,12 +5,22 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css')}}">
   </head>
   <body>
-    <main>
+    <header>
       <h1>Delete {{restaurant.name}}?</h1>
+    </header>
+    <main>
+      <div class='messages'></div>
+      <nav>
+        <div class='button'>
+          <a href='{{url_for('showRestaurants')}}'>Cancel</a>
+        </div>
+      </nav>
       <form action="{{url_for('deleteRestaurant', restaurant_id = restaurant.id)}}" method = 'POST'>
-        <input type='submit' value='Delete'>
+        <fieldset>
+          <label for='delete'>Are you rusre you want to delete {{restaurant.name}}?</label><br>
+          <input type='submit' value='Delete'>
+        </fieldset>
       </form>
-      <p><a href='{{url_for('showRestaurants')}}'>Cancel</a></p>
     </main>
   </body>
 </html>

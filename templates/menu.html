@@ -5,16 +5,25 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css')}}">
   </head>
   <body>
-    <main>
+    <header>
       <h1>{{restaurant.name}} Menu</h1>
-      {% with messages = get_flashed_messages() %}
-      <ul>
-      {% for message in messages %}
-        <li><strong>{{ message }}</strong></li>
-      {% endfor %}
-      {% endwith %}
-      <p><a href='{{url_for('showRestaurants')}}'>All Restaurants</a></p>
-      <p><a href='{{url_for('newMenuItem', restaurant_id = restaurant.id)}}'>New Menu Item</a></p>
+    </header>
+    <main>
+      <div class='messages'>
+        {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+          <li><strong>{{ message }}</strong></li>
+        {% endfor %}
+        {% endwith %}
+      </div>
+      <nav>
+        <div class='button'>
+          <a href='{{url_for('showRestaurants')}}'>All Restaurants</a>
+        </div>
+        <div class='button'>
+          <a href='{{url_for('newMenuItem', restaurant_id = restaurant.id)}}'>New Menu Item</a>
+        </div>
+      </nav>
       {% for i in menuItems%}
 
       <div class='menuItem'>
