@@ -1,0 +1,73 @@
+/* Page layout */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    background-color: #B4C788;
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Times New Roman", Times, serif;
+    color: white;
+}
+a{
+  color: white;
+}
+a:hover {
+    color: #F8C9CD;
+}
+main{
+  width: 90%;
+  margin: auto;
+}
+.restaurant{
+  background-color: #624577;
+  color: white;
+  border: 2px solid white;
+  width: 25%;
+  margin: 1%;
+  padding: 2%;
+  float: left;
+  border-radius: 25px;
+}
+.menuItem{
+  background-color: #624577;
+  color: white;
+  border: 2px solid white;
+  width: 25%;
+  margin: 1%;
+  padding: 2%;
+  float: left;
+  border-radius: 25px;
+}
+fieldset{
+  background-color: #624577;
+  color: white;
+  border: 2px solid white;
+  width: 25%;
+  margin: 1%;
+  padding: 2%;
+  float: left;
+  border-radius: 25px;
+}
+
+/*
+#90A65C - Green
+#E2EFC2 - light
+#B4C788 - light/med
+#6D823D - med/dark
+#576E20 - dark
+
+#AC5F65	- Red
+#F8C9CD - light
+#CF8D92 - light/med
+#873F44 - med/dark
+#722127 - dark
+
+#624577	- Purple
+#9E8DAB - light
+#7D648E - light/med
+#4A2E5D - med/dark
+#391A4E - dark
+*/

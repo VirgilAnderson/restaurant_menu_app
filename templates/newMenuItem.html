@@ -2,37 +2,42 @@
 <html>
   <head>
     <title>New Menu Item: {{restaurant.name}}</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css')}}">
   </head>
   <body>
-    <h1>New Menu Item: {{restaurant.name}}</h1>
-    <form action="{{ url_for('newMenuItem', restaurant_id = restaurant.id)}}" method='post'>
-      <fieldset>
-        <p>
-          <label for='name'>Name:</label><br>
-          <input type='text' name='name'>
-        </p>
-        <p>
-          <label for='price'>Price:</label><br>
-          <input type='text' name='price'>
-        </p>
-        <p>
-          <label for='course'>Course:</label><br>
-          <select name='course'>
-            <option value='appetizer'>Appetizer</option>
-            <option value='salad'>Salad</option>
-            <option value='soup'>Soup</option>
-            <option value='fish'>Fish</option>
-            <option value='entree'>Entree</option>
-            <option value='dessert'>Dessert</option>
-          </select>
-        </p>
-        <p>
-          <label for='description'>Description:</label><br>
-          <textarea name='description' cols=50 rows=10></textarea>
-        </p>
-        <input type='submit' value='Create'>
-      </fieldset>
-    </form>
-    <p><a href='{{url_for('showMenu', restaurant_id = restaurant.id)}}'>Cancel</a></p>
+    <main>
+      <h1>New Menu Item: {{restaurant.name}}</h1>
+      <p><a href='{{url_for('showMenu', restaurant_id = restaurant.id)}}'>Cancel</a></p>
+      <form action="{{ url_for('newMenuItem', restaurant_id = restaurant.id)}}" method='post'>
+        <fieldset>
+          <p>
+            <label for='name'>Name:</label><br>
+            <input type='text' name='name'>
+          </p>
+          <p>
+            <label for='price'>Price:</label><br>
+            <input type='text' name='price'>
+          </p>
+          <p>
+            <label for='course'>Course:</label><br>
+            <select name='course'>
+              <option value='Appetizer'>Appetizer</option>
+              <option value='Salad'>Salad</option>
+              <option value='Soup'>Soup</option>
+              <option value='Fish'>Fish</option>
+              <option value='Entree'>Entree</option>
+              <option value='Dessert'>Dessert</option>
+              <option value='Drinks'>Drinks</option>
+            </select>
+          </p>
+          <p>
+            <label for='description'>Description:</label><br>
+            <textarea name='description' cols=50 rows=10></textarea>
+          </p>
+          <input type='submit' value='Create'>
+        </fieldset>
+      </form>
+
+    </main>
   </body>
 </html>
