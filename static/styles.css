@@ -32,8 +32,8 @@ header{
 main{
   width: 90%;
   padding: 1% 5%;
-  margin: 0 0 100px 0;
-  min-height: 400px;
+  margin: 0 0 50px 0;
+  min-height: 420px;
   float: left;
   clear: left;
 }
