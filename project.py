@@ -67,7 +67,14 @@ def showMenu(restaurant_id):
     # Read all the menu items for the restaurant
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     items = session.query(MenuItem).filter_by(restaurant_id = restaurant_id).all()
-    return render_template('menu.html', restaurant = restaurant, menuItems = items)
+    appetizers = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Appetizer').all()
+    salad = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Salad').all()
+    soup = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Soup').all()
+    fish = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Fish').all()
+    entree = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Entree').all()
+    dessert = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Dessert').all()
+    drinks = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Drinks').all()
+    return render_template('menu.html', restaurant = restaurant, menuItems = items, appetizers = appetizers, salad = salad, soup = soup, fish = fish, entree = entree, dessert = dessert, drinks = drinks)
 
 # Create Menu item
 @app.route('/restaurants/<int:restaurant_id>/menu/new', methods=['GET', 'POST'])
