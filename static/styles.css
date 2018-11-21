@@ -17,6 +17,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 a{
   color: white;
+  text-decoration: none;
 }
 a:hover {
     color: #F8C9CD;
@@ -35,6 +36,15 @@ main{
   min-height: 400px;
   float: left;
   clear: left;
+}
+section{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 .messages{
   width: 90%;
@@ -56,6 +66,17 @@ nav {
   width: 20%;
   text-align: center;
   float: left;
+}
+.buttonSM{
+  padding: 1%;
+  margin: 0 1%;
+  border: 2px solid white;
+  color: white;
+  text-align: center;
+  float: left;
+  width: 30%;
+  background-color: #576E20;
+  border-radius: 10px;
 }
 .button:hover{
   background-color: #391A4E;
@@ -102,9 +123,6 @@ footer{
   float: left;
   clear: left;
   border-bottom: 8px solid #9E8DAB;
-  position: fixed;
-  bottom: 0;
-  right: 0;
 }
 
 /*
