@@ -67,14 +67,56 @@ def showMenu(restaurant_id):
     # Read all the menu items for the restaurant
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     items = session.query(MenuItem).filter_by(restaurant_id = restaurant_id).all()
+
+    # Query Appetizers
     appetizers = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Appetizer').all()
+    # check if empty
+    appetizersFlag = ''
+    if not appetizers:
+        appetizersFlag = 'display:none;'
+
+    # Query salad
     salad = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Salad').all()
+    # check if empty
+    saladFlag = ''
+    if not salad:
+        saladFlag = 'display:none;'
+
+    # Query soup
     soup = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Soup').all()
+    soupFlag = ''
+    if not soup:
+        soupFlag = 'display:none;'
+
+    # Query Fish
     fish = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Fish').all()
+    # Check if empty
+    fishFlag = ''
+    if not fish:
+        fishFlag = 'display:none;'
+
+    # Query Entree
     entree = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Entree').all()
+    # Check if empty
+    entreeFlag = ''
+    if not entree:
+        entreeFlag = 'display:none;'
+
+    # Query Dessert
     dessert = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Dessert').all()
+    # check if empty
+    dessertFlag = ''
+    if not dessert:
+        dessertFlag = 'display:none;'
+
+    # Query Drinks
     drinks = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, course = 'Drinks').all()
-    return render_template('menu.html', restaurant = restaurant, menuItems = items, appetizers = appetizers, salad = salad, soup = soup, fish = fish, entree = entree, dessert = dessert, drinks = drinks)
+    # check if empty
+    drinksFlag = ''
+    if not drinks:
+        drinksFlag = 'display:none;'
+
+    return render_template('menu.html', restaurant = restaurant, menuItems = items, appetizers = appetizers, salad = salad, soup = soup, fish = fish, entree = entree, dessert = dessert, drinks = drinks, appetizersFlag = appetizersFlag, saladFlag = saladFlag, soupFlag = soupFlag, fishFlag = fishFlag, entreeFlag = entreeFlag, dessertFlag = dessertFlag, drinksFlag = drinksFlag)
 
 # Create Menu item
 @app.route('/restaurants/<int:restaurant_id>/menu/new', methods=['GET', 'POST'])
